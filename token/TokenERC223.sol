@@ -1,8 +1,8 @@
  pragma solidity ^0.4.24;
  
  import "./libary/SafeMath.sol" ;
- import "browser/ERC223.sol" ;
-import 'browser/ERC223_receiving_contract.sol';
+ import "./ERC223.sol" ;
+import './ERC223_receiving_contract.sol';
 
 contract ERC223Token is ERC223Interface {
     using SafeMath for uint;
