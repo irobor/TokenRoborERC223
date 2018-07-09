@@ -1,7 +1,7 @@
  pragma solidity ^0.4.24;
  
- import "browser/TokenERC223.sol" ;
- import "browser/OwnableContract.sol" ;
+ import "./TokenERC223.sol" ;
+ import "./OwnableContract.sol" ;
 /**
  * @title Mintable token
  * @dev Simple ERC20 Token example, with mintable token creation
