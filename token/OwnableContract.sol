@@ -1,6 +1,6 @@
 pragma solidity ^0.4.21;
 
-import "browser/ownable.sol" ;
+import "./ownable.sol" ;
 
 contract OwnableContract is  Ownable {
     
