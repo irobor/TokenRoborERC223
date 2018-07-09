@@ -1,6 +1,6 @@
 pragma solidity ^0.4.21;
-import "browser/SimpleToken.sol" ;
-import "browser/SafeMath.sol" ;
+
+import "./libary/SafeMath.sol" ;
 
 interface token {
     function mint(address receiver, uint amount)external;
