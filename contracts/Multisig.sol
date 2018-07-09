@@ -1,8 +1,5 @@
 pragma solidity ^0.4.0;
 
-import "browser/SimpleToken.sol" ;
-import "browser/CrowdSaleERC223.sol" ;
-
 contract MultiSigWallet {
     
     address private _owner;
