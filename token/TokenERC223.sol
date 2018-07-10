@@ -1,6 +1,6 @@
  pragma solidity ^0.4.24;
  
- import "../libary/SafeMath.sol" ;
+ import "../library/SafeMath.sol" ;
  import "./ERC223.sol" ;
 import './ERC223_receiving_contract.sol';
 
