@@ -1,6 +1,6 @@
 pragma solidity ^0.4.21;
 
-import "./libary/SafeMath.sol" ;
+import "github.com/irobor/TokenRoborERC223/library/SafeMath.sol";
 
 interface token {
     function mint(address receiver, uint amount)external;
