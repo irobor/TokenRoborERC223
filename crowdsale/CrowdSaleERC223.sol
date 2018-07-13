@@ -26,16 +26,14 @@ contract Crowdsales {
   event TokenPurchase(address indexed purchaser, address indexed beneficiary,uint256 value,uint256 amount);
     event FundTransfer(address backer, uint amount, bool isContribution);
 
-    constructor (
+     constructor (
         address _adressToken,
-        address _ifSuccessfulSendTo,
+        address _Multisig,
         uint etherCostOfEachToken
     )public {
-        multisig = _ifSuccessfulSendTo;// адрес куда будет скидиываться эфир
+        multisig = _Multisig;// адрес куда будет скидиываться эфир
         tokenReward = token(_adressToken);
-        price = etherCostOfEachToken * 0.000033805151837529 ether ;// стоимость одного токена в эфирах
-       
-      
+        price = etherCostOfEachToken * 0.000033805151837529 ether ;// стоимость одного токена в эфирах     
     }
 
     function ()external payable {
