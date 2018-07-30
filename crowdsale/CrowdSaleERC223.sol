@@ -1,16 +1,17 @@
 pragma solidity ^0.4.21;
 
 import "github.com/irobor/TokenRoborERC223/library/SafeMath.sol";
-
+//import "browser/Multisig.sol";
+//import "browser/SimpleToken.sol" ;
 interface token {
     function mint(address receiver, uint amount)external;
 }
 
 contract Crowdsales {
     using SafeMath for uint256;
-    address public multisig; // кошелёк куда отправляется эфир от инвестора
-    uint public amountRaised;// общее колличество собранного эфира
-    uint public price; // цена за эфир
+    address multisig_ ; // кошелёк куда отправляется эфир от инвестора
+    uint amountRaised_ ;// общее колличество собранного эфира
+    uint price_; // цена за эфир
     token public tokenReward ; // интерфейс для контракта токена, функции mint()
     
     mapping(address => uint256) public balanceOf;
@@ -26,16 +27,30 @@ contract Crowdsales {
   event TokenPurchase(address indexed purchaser, address indexed beneficiary,uint256 value,uint256 amount);
     event FundTransfer(address backer, uint amount, bool isContribution);
 
-     constructor (
+    constructor (
         address _adressToken,
         address _Multisig,
         uint etherCostOfEachToken
     )public {
-        multisig = _Multisig;// адрес куда будет скидиываться эфир
+        multisig_ = _Multisig;// адрес куда будет скидиываться эфир
         tokenReward = token(_adressToken);
-        price = etherCostOfEachToken * 0.000033805151837529 ether ;// стоимость одного токена в эфирах     
+        price_ = etherCostOfEachToken * 0.000033805151837529 ether ;// стоимость одного токена в эфирах
+       
+      
     }
-
+    //общее кол-во собранного эфира
+    function amountRaised() public view returns (uint) {
+    return amountRaised_ ;
+    }
+    //цена за один эфир
+    function price() public view returns (uint) {
+    return price_ ;
+    }
+    // адрес кошелька multisig
+    function multisig() public view returns (address) {
+    return multisig_ ;
+    }
+    
     function ()external payable {
         buyTokens(msg.sender); 
     }
@@ -50,8 +65,8 @@ contract Crowdsales {
         uint256 amount = msg.value;
         _preValidatePurchase(_beneficiary, amount);// проверяем на существование адреса и эфир
         uint256 tokens = _getTokenAmount(amount); // получаем к-во токенов для чеканки 
-        balanceOf[_beneficiary] += amount;
-        amountRaised = amountRaised.add(amount);
+        balanceOf[_beneficiary] += amount; // фиксируем баланс инвестора
+        amountRaised_ = amountRaised_.add(amount); // 
         _processPurchase(_beneficiary, tokens);// запускаем mint
        emit TokenPurchase(msg.sender, _beneficiary, amount, tokens);
         emit FundTransfer(_beneficiary, amount, true);
@@ -75,7 +90,7 @@ contract Crowdsales {
   function _getTokenAmount(uint256 _weiAmount)
     internal view returns (uint256)
   {
-    return _weiAmount.div(price);
+    return _weiAmount.div(price_);
   }
    /**
    * @dev Source of tokens. Override this method to modify the way in which the crowdsale ultimately gets and sends its tokens.
@@ -109,7 +124,7 @@ contract Crowdsales {
    * @dev Determines how ETH is stored/forwarded on purchases.
    */
   function _forwardFunds() internal {
-    multisig.transfer(msg.value);
+    multisig_.transfer(msg.value);
   }
     
 }
