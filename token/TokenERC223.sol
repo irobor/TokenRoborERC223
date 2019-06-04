@@ -1,7 +1,7 @@
- pragma solidity ^0.4.24;
+pragma solidity ^0.4.24;
  
- import "../library/SafeMath.sol" ;
- import "./ERC223.sol" ;
+import "../library/SafeMath.sol" ;
+import "./ERC223.sol" ;
 import './ERC223_receiving_contract.sol';
 
 contract ERC223Token is ERC223Interface {
