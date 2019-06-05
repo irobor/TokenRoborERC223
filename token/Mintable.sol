@@ -26,15 +26,7 @@ contract MintableToken is ERC223Token, OwnableContract {
    * @param _amount The amount of tokens to mint.
    * @return A boolean that indicates if the operation was successful.
    */
-  function mint(
-    address _to,
-    uint256 _amount
-  )
-    onlyOwnerOrContract
-    canMint
-    public
-    returns (bool)
-  {
+  function mint(address _to, uint256 _amount) onlyOwnerOrContract canMint public returns (bool) {
     require(_to != address(0));
     uint codeLength;
     bytes memory empty;
