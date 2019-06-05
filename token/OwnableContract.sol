@@ -1,7 +1,5 @@
 pragma solidity ^0.4.21;
-
 import "./Ownable.sol" ;
-
 contract OwnableContract is  Ownable {
     
     mapping (address => bool) AddressOwner;
