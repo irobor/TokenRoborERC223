@@ -32,6 +32,7 @@ contract MintableToken is ERC223Token, OwnableContract {
     bytes memory empty;
     assembly {
         // Retrieve the size of the code on target address, this needs assembly .
+        // Получить размер кода по целевому адресу, для этого требуется assembly
         codeLength := extcodesize(_to)
     }
     totalSupply_ = totalSupply_.add(_amount);
