@@ -9,11 +9,11 @@ contract SimpleTokenCoin is MintableToken, BurnableToken {
         string _symbol
     )
     public {
-        //totalSupply_ = initialSupply * 10 ** uint256(decimals_);  // Update total supply with the decimal amount
-       // balances[msg.sender] = totalSupply_;                // Give the creator all initial tokens
+        //totalSupply_ = initialSupply * 10 ** uint256(decimals_);
+        // Update total supply with the decimal amount
+       // balances[msg.sender] = totalSupply_;  
+       // Give the creator all initial tokens
         name_ = _name;                                   // Set the name for display purposes
         symbol_ = _symbol;                               // Set the symbol for display purposes
-    }
-    
+    }    
 }
- 
