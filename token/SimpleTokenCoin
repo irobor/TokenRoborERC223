@@ -1,9 +1,6 @@
 pragma solidity ^0.4.24;
- //import "github.com/ethereum/dapp-bin/library/iterable_mapping.sol";
- //import "github.com/ethereum/dapp-bin/library/iterable_mapping.sol";
- import "github.com/irobor/TokenRoborERC223/token/Mintable.sol";
- import "github.com/irobor/TokenRoborERC223/token/Burn.sol";
- //import "browser/Burn.sol" ;
+import "github.com/irobor/TokenRoborERC223/token/Mintable.sol";
+import "github.com/irobor/TokenRoborERC223/token/Burn.sol";
  
 contract SimpleTokenCoin is MintableToken, BurnableToken {
     
